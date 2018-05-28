@@ -1,0 +1,24 @@
+<div class="container" id="add">
+  <div class="form-group">
+    <label for="conte">Описание</label>
+    <input type="text" id="conte" [(ngModel)]="newEdu.title" class="form-control" value="{{(edu | async)?.title}}">
+  </div>
+  <div class="form-group">
+    <label for="contestName">Описание</label>
+    <input type="text" id="contestName" [(ngModel)]="newEdu.description" class="form-control" value="{{(edu | async)?.description}}">
+  </div>
+  <div class="form-group">
+    <label for="contestURL">Ссылка на видео</label>
+    <input type="url" id="contestURL" [(ngModel)]="newEdu.url" class="form-control" value="{{(edu  | async)?.url}}">
+  </div>
+  <img src="{{(edu | async)?.imageUrl}}" style="height: 200px;" alt="">
+  <div class="form-group">
+    <label for="contestImage">Изображение</label>
+    <input type="file" id="contestImage" class="custom-file" (change)="onFileSelected($event)">
+  </div>
+  <button class="btn btn-success" style="margin-right: 10px;" (click)="update()">Сохранить</button>
+  <button class="btn btn-light" (click)="router.navigate(['education'])">Отменить</button>
+</div>
+<div class="spinner" id="loading" style="display: none;">
+  <div class="spinner"></div>
+</div>

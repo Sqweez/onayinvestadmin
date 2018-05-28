@@ -1,0 +1,20 @@
+<div class="container" id="contestAdd">
+  <div class="form-group">
+    <label for="contestName">Описание</label>
+    <input type="text" id="contestName" [(ngModel)]="newContest.title" class="form-control" value="{{(contest | async)?.title}}">
+  </div>
+  <div class="form-group">
+    <label for="contestURL">Ссылка на новость</label>
+    <input type="url" id="contestURL" [(ngModel)]="newContest.url" class="form-control" value="{{(contest | async)?.url}}">
+  </div>
+  <img src="{{(contest | async)?.image}}" style="height: 200px;" alt="">
+  <div class="form-group">
+    <label for="contestImage">Изображение</label>
+    <input type="file" id="contestImage" class="custom-file" (change)="onFileSelected($event)">
+  </div>
+  <button class="btn btn-success" style="margin-right: 10px;" (click)="update()">Сохранить</button>
+  <button class="btn btn-light" (click)="route.navigate(['contests'])">Отменить</button>
+</div>
+<div class="spinner" id="contestLoading" style="display: none;">
+  <div class="spinner"></div>
+</div>

@@ -1,0 +1,25 @@
+<div class="container-fluid">
+  <div class="row justify-content-md-center">
+    <div class="col">
+      <h3>Имя проекта*: </h3> <p>{{(project | async)?.name}}</p>
+      <h3>Описание проекта*: </h3><p>{{(project | async)?.name}}</p>
+      <h3>Стадия проекта*: </h3><p>{{(project | async)?.stage}}</p>
+      <h3>Фриланс: </h3><p>{{(project | async)?.freelance}}</p>
+      <h3>Сумма инвестиций: </h3><p>{{(project | async)?.money}}</p>
+      <h3>Автор проекта:</h3><p>{{(profile | async)?.firstname}} {{(profile | async)?.lastname}}</p>
+    </div>
+    <div class="col">
+      <h3>Лого</h3>
+      <img height="300px" [src]="(project | async)?.imageUrl" alt="">
+    </div>
+    <div class="col">
+      <h3>Видеопитч</h3>
+      <iframe width="560" height="315" [src]="video" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+    </div>
+  </div>
+</div>
+<div class="row justify-content-md-center">
+  <button *ngIf="(project | async)?.isAccepted != 1" class="btn btn-success" style="margin-right: 5px" (click)="acceptProject()">Одобрить к публикации</button>
+  <button *ngIf="(project | async)?.isAccepted != 2" class="btn btn-warning" style="margin-right: 5px" (click)="declineProject()">Отклонить</button>
+  <button class="btn btn-danger" (click)="deleteProject()">Удалить проект</button>
+</div>

@@ -1,0 +1,33 @@
+<div class="container" align="center">
+  <h2>
+    Проекты пользователя: {{(user | async)?.firstname}} {{(user | async)?.lastname}}
+  </h2>
+  <div class="projects" *ngIf="route.children.length === 0" style="visibility: hidden">
+    <table class="table table-striped table-dark">
+      <thead class="thead-dark">
+      <th>Название проекта</th>
+      <th>Описание</th>
+      <th>Стадия</th>
+      <th>Фриланс</th>
+      <th>Статус одобрения</th>
+      <th>Подробное описание</th>
+      </thead>
+      <tbody>
+      <tr *ngFor="let project of projects | async">
+        <td>{{project.name}}</td>
+        <td>{{project.description}}</td>
+        <td>{{project.stage}}</td>
+        <td>{{project.freelance}}</td>
+        <td *ngIf="project.isAccepted == 0">На рассмотрении</td>
+        <td *ngIf="project.isAccepted == 1">Одобрено</td>
+        <td *ngIf="project.isAccepted == 2">Отклонено</td>
+        <td>
+          <button class="btn btn-warning" routerLink="{{project.key}}/">Подробнее</button>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+<h5 align="center" class="projectNone">Проекты отсутствуют</h5>
+<router-outlet></router-outlet>

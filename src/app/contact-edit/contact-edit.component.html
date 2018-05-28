@@ -1,0 +1,27 @@
+<div class="container" id="add">
+  <div class="form-group">
+    <label for="contestName">Название</label>
+    <input type="text" id="contestName" [(ngModel)]="contact.Title" class="form-control" value="{{(oldContact | async)?.Title}}">
+  </div>
+  <div class="form-group">
+    <label for="contestURL">E-mail</label>
+    <input type="text" id="contestURL" [(ngModel)]="contact.email" class="form-control" value="{{(oldContact | async)?.email}}">
+  </div>
+  <div class="form-group">
+    <label for="phone">Телефон</label>
+    <input type="text" id="phone" [(ngModel)]="contact.phone" class="form-control" value="{{(oldContact | async)?.phone}}">
+  </div>
+  <div class="form-group">
+    <label>Прежний логотип&nbsp;&nbsp;</label>
+    <img src="{{(oldContact | async)?.logo}}" style="height: 200px;" alt="">
+  </div>
+  <div class="form-group">
+    <label for="contestImage">Изображение</label>
+    <input type="file" id="contestImage" (change)="onFileSelected($event)">
+  </div>
+  <button class="btn btn-success" style="margin-right: 5px;" (click)="onUpload()">Сохранить</button>
+  <button class="btn btn-light" (click)="router.navigate(['contacts'])">Отменить</button>
+</div>
+<div class="spinner" id="loading" style="display: none">
+  <div class="spinner"></div>
+</div>

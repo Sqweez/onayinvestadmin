@@ -1,1 +1,45 @@
-/* You can add global styles to this file, and also import other style files */
+body {
+  background: #212121!important;
+}
+h1, h2, h3, h4, h5, h6, p, label, input, a {
+  color: #fafafa;
+}
+a:hover{
+  color: #c82333;
+  text-decoration: none;
+}
+.btn-danger {
+  background-color: #b71c1c!important;
+}
+.btn-warning {
+  background-color: #F9A825!important;
+  color: #fafafa!important;
+}
+.spinner {
+  width: 40px;
+  height: 40px;
+  background-color: #fafafa;
+
+  margin: 20% auto;
+  -webkit-animation: sk-rotateplane 1.2s infinite ease-in-out;
+  animation: sk-rotateplane 1.2s infinite ease-in-out;
+}
+
+@-webkit-keyframes sk-rotateplane {
+  0% { -webkit-transform: perspective(120px) }
+  50% { -webkit-transform: perspective(120px) rotateY(180deg) }
+  100% { -webkit-transform: perspective(120px) rotateY(180deg)  rotateX(180deg) }
+}
+
+@keyframes sk-rotateplane {
+  0% {
+    transform: perspective(120px) rotateX(0deg) rotateY(0deg);
+    -webkit-transform: perspective(120px) rotateX(0deg) rotateY(0deg)
+  } 50% {
+      transform: perspective(120px) rotateX(-180.1deg) rotateY(0deg);
+      -webkit-transform: perspective(120px) rotateX(-180.1deg) rotateY(0deg)
+    } 100% {
+        transform: perspective(120px) rotateX(-180deg) rotateY(-179.9deg);
+        -webkit-transform: perspective(120px) rotateX(-180deg) rotateY(-179.9deg);
+      }
+}
