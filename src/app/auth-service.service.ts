@@ -8,10 +8,20 @@ import 'firebase/auth';
 export class AuthServiceService {
   email: string;
   password: string;
-  admin: number;
+  data = {} as any;
   constructor(private afAuth: AngularFireAuth, private db: AngularFireDatabase) { }
    isAdmin(){
-   console.log(this.db.object('profile/' + this.afAuth.auth.currentUser.uid + '/admin'));
+    this.afAuth.authState.subscribe(data => {
+      this.db.object('profile/' + data.uid).valueChanges().subscribe(info => {
+        this.data = info;
+        if(this.data.admin === 1){
+          return true;
+        }
+        else{
+          return false;
+        }
+      });
+    });
   }
   isLogged(){
     if(this.afAuth.auth.currentUser != null){

@@ -24,7 +24,8 @@ export class ProjectsComponent implements OnInit {
     );
   }
   deleteProject(){
-    this.af.object('project/' + this.id).remove();
+    console.log(this.id);
+    this.af.object('projects/' + this.id).remove();
     $('#cancelModal').click();
   }
   ngOnInit() {

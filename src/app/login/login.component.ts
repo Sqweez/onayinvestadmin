@@ -19,14 +19,8 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
   }
-  logIn(){
-    this.afAuth.auth.signInWithEmailAndPassword(this.email, this.password);
-  }
+
   async login(){
-    await this.logIn();
-   const status = this.auth.isLogged();
-   if(status){
-     this.router.navigate(['']);
-   }
+    this.afAuth.auth.signInWithEmailAndPassword(this.email, this.password);
   }
 }

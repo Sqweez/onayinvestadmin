@@ -8,6 +8,10 @@
     <input type="url" id="contestURL" [(ngModel)]="contest.url" class="form-control">
   </div>
   <div class="form-group">
+    <label for="contestText">Текст</label>
+    <textarea rows="7" id="contestText" [(ngModel)]="contest.text" class="form-control"></textarea>
+  </div>
+  <div class="form-group">
     <label for="contestImage">Изображение</label>
     <input type="file" id="contestImage" (change)="onFileSelected($event)">
   </div>

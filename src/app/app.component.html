@@ -1,17 +1,21 @@
-<nav id="navbar" class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <a class="navbar-brand" id="homeButton" routerLink="">OnayAdmin</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-    <div class="navbar-nav">
-      <a class="nav-item nav-link" id="projectsButton" routerLink="projects">Проекты<span class="sr-only">(current)</span></a>
-      <a class="nav-item nav-link" routerLink="contests">Конкурсы</a>
-      <a class="nav-item nav-link" routerLink="education">Образование</a>
-      <a class="nav-item nav-link" routerLink="contacts">Контакты</a>
-      <a class="nav-item nav-link" routerLink="users" style="margin-right: 120%;">Пользователи</a>
-      <a class="nav-item nav-link" (click)="logOut()">Выйти</a>
+<div *ngIf="isLogged">
+  <nav id="navbar" class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" id="homeButton" routerLink="">OnayAdmin</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
+            aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav">
+        <a class="nav-item nav-link" id="projectsButton" routerLink="projects">Проекты<span
+          class="sr-only">(current)</span></a>
+        <a class="nav-item nav-link" routerLink="contests">Новости</a>
+        <a class="nav-item nav-link" routerLink="education">Образование</a>
+        <a class="nav-item nav-link" routerLink="contacts">Контакты</a>
+        <a class="nav-item nav-link" routerLink="users" style="margin-right: 120%;">Пользователи</a>
+        <a class="nav-item nav-link" (click)="logOut()">Выйти</a>
+      </div>
     </div>
-  </div>
-</nav>
+  </nav>
+</div>
 <router-outlet></router-outlet>

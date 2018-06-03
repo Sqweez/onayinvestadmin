@@ -2,7 +2,7 @@
   <thead>
     <th>Название</th>
     <th>Изображение</th>
-    <th>Ссылка</th>
+    <th>Ссылка или текст</th>
     <th>Изменить</th>
     <th>Удалить</th>
   </thead>
@@ -10,7 +10,8 @@
   <tr *ngFor="let contest of contests | async">
     <td>{{contest.title}}</td>
     <td><img width="100px" src="{{contest.image}}" alt=""></td>
-    <td><a target="_blank" [href]="contest.url">{{contest.url}}</a></td>
+    <td *ngIf="contest.url"><a target="_blank" [href]="contest.url">{{contest.url}}</a></td>
+    <td *ngIf="contest.text">{{contest.text}}</td>
     <td><button class="btn btn-warning" routerLink="{{contest.key}}">Изменить&nbsp;&nbsp;<i class="fas fa-pencil-alt"></i></button></td>
     <td>
       <button class="btn btn-danger" data-toggle="modal" data-target="#modal" (click)="id = contest.key">Удалить&nbsp;&nbsp;<i class="fas fa-trash-alt"></i></button>

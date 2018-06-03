@@ -1,24 +1,25 @@
 import { Injectable } from '@angular/core';
 import {CanActivate, Router} from '@angular/router';
-import { Observable } from 'rxjs';
+import {Observable, timer} from 'rxjs';
 import {AuthServiceService} from './auth-service.service';
 import {AngularFireAuth} from 'angularfire2/auth';
+import {AngularFireDatabase} from 'angularfire2/database';
 @Injectable({
   providedIn: 'root'
 })
 export class AuthGuard implements CanActivate {
+  data = {} as any;
   constructor(
     private auth: AuthServiceService,
     private afAuth: AngularFireAuth,
-    private router: Router){}
-  canActivate(): Observable<boolean> | Promise<boolean> | boolean {
+    private router: Router,
+    private db: AngularFireDatabase){}
+  public canActivate(): Observable<boolean> | Promise<boolean> | boolean {
     if(this.afAuth.auth.currentUser){
-      console.log('i am ok');
       return true;
     }
     else{
       console.log('i am not ok');
-      this.router.navigate(['admin']);
       return false;
     }
   }
