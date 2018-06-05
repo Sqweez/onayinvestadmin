@@ -12,7 +12,7 @@
       <h3>Лого</h3>
       <img height="300px" [src]="(project | async)?.imageUrl" alt="">
     </div>
-    <div class="col">
+    <div class="col" *ngIf="hasVideo">
       <h3>Видеопитч</h3>
       <iframe width="560" height="315" [src]="video" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
     </div>

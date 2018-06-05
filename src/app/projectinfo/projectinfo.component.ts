@@ -15,6 +15,7 @@ export class ProjectinfoComponent implements OnInit {
   project: Observable<any>;
   profile: Observable<any>;
   video: any;
+  hasVideo = false;
   constructor(private router: Router, private rt: ActivatedRoute, private db: AngularFireDatabase, private sanitizer: DomSanitizer) {
   }
   acceptProject() {
@@ -38,7 +39,10 @@ export class ProjectinfoComponent implements OnInit {
     });
       this.project = this.db.object('projects/' + this.projectId).valueChanges();
       this.project.subscribe(data => {
-        this.video = this.sanitizer.bypassSecurityTrustResourceUrl(data.videoUrl);
+        if(data.videoUrl){
+          this.hasVideo = true;
+          this.video = this.sanitizer.bypassSecurityTrustResourceUrl(data.videoUrl);
+        }
         this.profile = this.db.object('profile/' + data.uid).valueChanges();
       });
   }

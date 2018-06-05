@@ -37,6 +37,8 @@ export class EducationAddComponent implements OnInit {
     this.storage.upload(filePath, this.image).then(() => {
       this.storage.ref(filePath).getDownloadURL().subscribe(data => {
         this.education.imageUrl = data;
+        this.education.likeCount = 0;
+        this.education.viewCount = 0;
         this.education.url = 'https://www.youtube.com/embed/' + this.getVideoId(this.education.url);
         this.db.object('education/' + this.db.createPushId()).set(this.education);
         this.router.navigate(['education']);

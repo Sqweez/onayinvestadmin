@@ -4,4 +4,6 @@ export interface Education {
   url: any;
   description: string;
   imageUrl: string;
+  likeCount: number;
+  viewCount: number;
 }

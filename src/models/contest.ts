@@ -3,4 +3,6 @@ export interface Contest {
   title: string;
   url: string;
   text: string;
+  likeCount: number;
+  viewCount: number;
 }

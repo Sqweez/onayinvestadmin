@@ -15,4 +15,6 @@ export interface Project {
   freelance: string;
   money: string;
   isAccepted: number;
+  likeCount: number;
+  viewCount: number;
 }

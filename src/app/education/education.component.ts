@@ -28,6 +28,8 @@ export class EducationComponent implements OnInit {
   }
   deleteEducation(){
     this.db.object('education/' + this.id).remove();
+    this.db.list('likes/education/' + this.id).remove();
+    this.db.list('views/education/' + this.id).remove();
     $('#cancelModal').click();
   }
 

@@ -36,6 +36,8 @@ export class ContestAddComponent implements OnInit {
       this.storage.ref(filePath).getDownloadURL().subscribe(data => {
         this.contest.image = data;
         console.log(this.contest);
+        this.contest.likeCount = 0;
+        this.contest.viewCount = 0;
         this.db.object('news/' + this.db.createPushId()).set(this.contest);
         this.router.navigate(['contests']);
       });

@@ -27,6 +27,8 @@ export class ContestsComponent implements OnInit {
 
   deleteContest(){
     this.af.object('news/' + this.id).remove();
+    this.af.list('likes/news/' + this.id).remove();
+    this.af.list('views/news/' + this.id).remove();
     $('#cancelModal').click();
   }
 

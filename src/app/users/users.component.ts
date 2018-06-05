@@ -5,6 +5,7 @@ import {Observable} from 'rxjs';
 import {map} from 'rxjs/internal/operators';
 import * as $ from 'jquery';
 import {async} from 'rxjs/internal/scheduler/async';
+import {AngularFireAuth} from 'angularfire2/auth';
 
 @Component({
   selector: 'app-users',
@@ -18,7 +19,8 @@ export class UsersComponent implements OnInit {
   constructor(
     private db: AngularFireDatabase,
     public route: ActivatedRoute,
-    public router: Router
+    public router: Router,
+    private auth: AngularFireAuth
   ) { }
 
   ngOnInit() {
@@ -29,7 +31,7 @@ export class UsersComponent implements OnInit {
   }
   deleteUser(){
     this.db.object('profile/' + this.id).remove();
+    this.db.list('projects/', ref => ref.orderByChild('uid').equalTo(this.id)).remove();
     $('#cancelModal').click();
   }
-
 }
